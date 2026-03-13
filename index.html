@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Stakeholder Model - Royal Manufacturing</title>
+    <link rel="stylesheet" href="https://use.typekit.net/tio6qkp.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #a49483;
+            --gold-dark: #8f7f6f;
+            --magenta: #c47b47;
+            --magenta-dark: #ab6b3d;
+            --teal: #5f7489;
+            --teal-dark: #4f6274;
+            --aqua: #7f91a1;
+            --charcoal-900: #0b1624;
+            --charcoal-800: #111f30;
+            --charcoal-700: #1b2b3f;
+            --charcoal-600: #2f3d4f;
+            --slate-300: #e3e1dd;
+            --slate-400: #c5bfb7;
+            --white: #ffffff;
+            --gradient-magenta: linear-gradient(135deg, #c47b47, #ab6b3d);
+            --gradient-gold: linear-gradient(135deg, #b5a594, #8f7f6f);
+            --gradient-teal: linear-gradient(135deg, #6f8296, #4f6274);
+            --gradient-aqua: linear-gradient(135deg, #90a2b3, #6f8296);
+            --gradient-brand: linear-gradient(90deg, #a49483, #c47b47);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--charcoal-900);
+            color: var(--slate-300);
+            line-height: 1.7;
+            font-size: 1.05rem;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-brand);
+            z-index: 9999;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.24;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .top-nav {
+            position: fixed;
+            top: 4px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0.9rem 2.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(11, 22, 36, 0.88);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .top-nav.scrolled { padding: 0.7rem 2.2rem; }
+
+        .nav-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--white);
+            font-family: 'futura-pt', 'Roboto', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .nav-logo-wrap {
+            background: rgba(255,255,255,0.94);
+            border-radius: 8px;
+            padding: 0.35rem 0.55rem;
+            border: 1px solid rgba(164,148,131,0.4);
+        }
+
+        .nav-logo {
+            display: block;
+            width: 128px;
+            height: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.83rem;
+            font-weight: 500;
+            color: var(--slate-400);
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.25s ease;
+        }
+
+        .nav-links a:hover { color: var(--white); }
+
+        .nav-cta {
+            padding: 0.5rem 1.3rem !important;
+            background: var(--gradient-magenta) !important;
+            color: var(--white) !important;
+            border-radius: 999px;
+            font-weight: 600 !important;
+            box-shadow: 0 4px 14px rgba(196,123,71,0.35);
+        }
+
+        section {
+            position: relative;
+            z-index: 1;
+            --section-bg: none;
+            padding: 7rem 3rem;
+            max-width: 1200px;
+            margin: 1.3rem auto;
+            border-radius: 28px;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(135deg, rgba(7, 14, 24, 0.42), rgba(7, 14, 24, 0.62)),
+                var(--section-bg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -2;
+        }
+
+        section:first-of-type { padding-top: 10rem; }
+
+        #hero { --section-bg: url("https://www.royal-mfg.com/wp-content/uploads/1-Paloma-beauty-shot.jpg"); }
+        #foundation { --section-bg: url("https://www.royal-mfg.com/wp-content/uploads/35-Extra-FT-bower_ranch_master-bath.jpg"); }
+        #model { --section-bg: url("https://www.royal-mfg.com/wp-content/uploads/11-AdobeStock_201699816-534x800.jpg"); }
+        #benefits { --section-bg: url("https://www.royal-mfg.com/wp-content/uploads/10-AdobeStock_207776243-800x533.jpg"); }
+        #components { --section-bg: url("https://www.royal-mfg.com/wp-content/uploads/Group-329.jpg"); }
+        #career-paths { --section-bg: url("https://www.royal-mfg.com/wp-content/uploads/1-Paloma-beauty-shot.jpg"); }
+        #goals { --section-bg: url("https://www.royal-mfg.com/wp-content/uploads/10-AdobeStock_207776243-800x533.jpg"); }
+        #evaluation { --section-bg: url("https://www.royal-mfg.com/wp-content/uploads/11-AdobeStock_201699816-534x800.jpg"); }
+        #reviews { --section-bg: url("https://www.royal-mfg.com/wp-content/uploads/Group-329.jpg"); }
+        #compensation { --section-bg: url("https://www.royal-mfg.com/wp-content/uploads/Group-315.jpg"); }
+        #talent { --section-bg: url("https://www.royal-mfg.com/wp-content/uploads/35-Extra-FT-bower_ranch_master-bath.jpg"); }
+
+        .section-label {
+            font-size: 0.84rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .section-title {
+            font-family: 'futura-pt', 'Roboto', sans-serif;
+            font-size: clamp(2.2rem, 4.8vw, 3.35rem);
+            font-weight: 500;
+            color: var(--white);
+            line-height: 1.12;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.01em;
+        }
+
+        .section-body {
+            max-width: 780px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e8e5e0;
+        }
+
+        .section-divider {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent);
+        }
+
+        .hero {
+            text-align: center;
+            padding-top: 12rem !important;
+            padding-bottom: 8rem !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 70% 50% at 50% 30%, rgba(164,148,131,0.18) 0%, transparent 70%),
+                radial-gradient(ellipse 55% 44% at 20% 72%, rgba(127,145,161,0.10) 0%, transparent 70%),
+                radial-gradient(ellipse 55% 44% at 80% 68%, rgba(196,123,71,0.10) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .hero-series {
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-family: 'futura-pt', 'Roboto', sans-serif;
+            font-size: clamp(3rem, 7vw, 5.1rem);
+            font-weight: 500;
+            color: var(--white);
+            line-height: 1.03;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title .gold {
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-tagline {
+            font-size: 1.2rem;
+            color: #e4dfd8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            line-height: 1.75;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            margin-top: 2.3rem;
+            padding: 0.55rem 1.8rem;
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 999px;
+            font-size: 0.77rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--slate-400);
+        }
+
+        .stat-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3.4rem;
+            width: 100%;
+            max-width: 760px;
+        }
+
+        .stat-item { text-align: center; }
+
+        .stat-number {
+            font-family: 'futura-pt', 'Roboto', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 500;
+            line-height: 1;
+            margin-bottom: 0.35rem;
+        }
+
+        .stat-number.gold { color: #d5c6b7; }
+        .stat-number.magenta { color: #e3ae7f; }
+        .stat-number.teal { color: #a9bac9; }
+
+        .stat-label {
+            font-size: 0.82rem;
+            color: var(--slate-400);
+            font-weight: 500;
+            letter-spacing: 0.03em;
+        }
+
+        .def-card,
+        .card,
+        .highlight-box,
+        .featured-container,
+        .third-block,
+        .timeline,
+        .formula-box {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.16);
+            backdrop-filter: blur(3px);
+        }
+
+        .def-card {
+            border-radius: 20px;
+            padding: 2.5rem 3rem;
+            max-width: 850px;
+            margin-top: 1.5rem;
+            position: relative;
+        }
+
+        .def-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            border-radius: 20px 0 0 20px;
+            background: var(--gradient-brand);
+        }
+
+        .def-word {
+            font-family: 'futura-pt', 'Roboto', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 500;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+        }
+
+        .def-phonetic {
+            font-style: italic;
+            color: #bfd0df;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .def-text { font-size: 1.1rem; line-height: 1.8; }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin-top: 2rem;
+        }
+
+        /* Key Benefits: center cards 07 and 08 on the last row */
+        #benefits .card-grid {
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+        }
+
+        #benefits .card-grid .card {
+            grid-column: span 2;
+        }
+
+        #benefits .card-grid .card:nth-child(7) {
+            grid-column: 2 / span 2;
+        }
+
+        #benefits .card-grid .card:nth-child(8) {
+            grid-column: 4 / span 2;
+        }
+
+        .card {
+            border-radius: 18px;
+            padding: 2rem;
+            transition: all 0.32s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(196,123,71,0.45);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 24px rgba(5, 12, 20, 0.28);
+        }
+
+        #benefits .card:hover,
+        #career-paths .card:hover,
+        #reviews .card:hover,
+        #compensation .card:hover {
+            border-color: rgba(216,202,189,0.68);
+            background: rgba(255,255,255,0.14);
+            transform: translateY(-7px) scale(1.015);
+            box-shadow: 0 18px 38px rgba(5, 12, 20, 0.38);
+        }
+
+        .card-number {
+            font-family: 'futura-pt', 'Roboto', sans-serif;
+            font-size: 2rem;
+            font-weight: 500;
+            line-height: 1;
+            margin-bottom: 0.45rem;
+        }
+
+        .card-number.magenta,
+        .card-number.gold,
+        .card-number.teal,
+        .card-number.aqua {
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-number.magenta { background-image: var(--gradient-magenta); }
+        .card-number.gold { background-image: var(--gradient-gold); }
+        .card-number.teal { background-image: var(--gradient-teal); }
+        .card-number.aqua { background-image: var(--gradient-aqua); }
+
+        .card-number.behavior-circle {
+            font-size: 1.62rem;
+            line-height: 1;
+            display: inline-block;
+            transform: translateY(-1px);
+        }
+
+        .card-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--white);
+            margin-bottom: 0.35rem;
+        }
+
+        .card-desc {
+            font-size: 0.92rem;
+            line-height: 1.65;
+            color: #ded8d1;
+        }
+
+        .thirds-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.45rem;
+            margin-top: 2rem;
+        }
+
+        .third-block {
+            border-radius: 18px;
+            padding: 2rem 1.7rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .third-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .third-block.magenta-block::before { background: var(--gradient-magenta); }
+        .third-block.gold-block::before { background: var(--gradient-gold); }
+        .third-block.teal-block::before { background: var(--gradient-teal); }
+
+        .third-fraction {
+            font-family: 'futura-pt', 'Roboto', sans-serif;
+            font-size: 3rem;
+            font-weight: 500;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .third-title {
+            font-weight: 700;
+            font-size: 1.03rem;
+            color: var(--white);
+            margin-bottom: 0.65rem;
+        }
+
+        .third-items {
+            font-size: 0.9rem;
+            line-height: 1.75;
+            color: #dbd6cf;
+        }
+
+        .timeline {
+            display: flex;
+            align-items: flex-start;
+            gap: 0;
+            margin-top: 2.5rem;
+            position: relative;
+            border-radius: 18px;
+            padding: 1rem 0.5rem 0.75rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 43px;
+            left: 1.5rem;
+            right: 1.5rem;
+            height: 2px;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .timeline-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            padding: 0 0.5rem;
+        }
+
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin: 26px auto 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline-dot.magenta { background: #cc8a58; box-shadow: 0 0 12px rgba(196,123,71,0.45); }
+        .timeline-dot.gold { background: #d2c2b2; box-shadow: 0 0 12px rgba(181,165,148,0.45); }
+        .timeline-dot.teal { background: #8ba2b8; box-shadow: 0 0 12px rgba(111,130,150,0.45); }
+        .timeline-dot.aqua { background: #b9c7d3; box-shadow: 0 0 12px rgba(143,160,176,0.45); }
+
+        .timeline-label {
+            font-weight: 700;
+            font-size: 0.88rem;
+            color: var(--white);
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-desc {
+            font-size: 0.82rem;
+            color: #d8d3cc;
+            line-height: 1.45;
+        }
+
+        .highlight-box,
+        .featured-container {
+            border-radius: 20px;
+            padding: 2rem 2.5rem;
+            max-width: 900px;
+            margin-top: 1.5rem;
+        }
+
+        .highlight-box.magenta-box { border-color: rgba(196,123,71,0.45); }
+        .highlight-box.teal-box { border-color: rgba(111,130,150,0.45); }
+
+        .quote-block {
+            border-left: 0;
+            padding-left: 0;
+            margin-top: 2rem;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-family: 'futura-pt', 'Roboto', sans-serif;
+            font-style: italic;
+            font-size: 2.4rem;
+            color: var(--white);
+            line-height: 1.65;
+        }
+
+        .quote-author {
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: #d2c5b7;
+            margin-top: 0.7rem;
+        }
+
+        .icon-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.45rem;
+            margin-top: 2rem;
+        }
+
+        .icon-item { text-align: center; }
+
+        .icon-circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.75rem;
+            font-size: 1.35rem;
+            border: 1px solid rgba(255,255,255,0.22);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .icon-label {
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--white);
+            margin-bottom: 0.2rem;
+        }
+
+        .icon-desc {
+            font-size: 0.82rem;
+            color: #dad4cd;
+            line-height: 1.45;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+            align-items: start;
+        }
+
+        .big-stat {
+            font-family: 'futura-pt', 'Roboto', sans-serif;
+            font-size: clamp(2.6rem, 5vw, 4.4rem);
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        .formula-box {
+            border-radius: 16px;
+            padding: 1.5rem 1.6rem;
+            margin-top: 1.2rem;
+        }
+
+        .formula-title {
+            font-size: 0.84rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #c4bbb0;
+            margin-bottom: 0.7rem;
+            font-weight: 600;
+        }
+
+        .formula-main {
+            font-family: 'futura-pt', 'Roboto', sans-serif;
+            font-size: clamp(1.35rem, 2.7vw, 1.85rem);
+            color: var(--white);
+            line-height: 1.3;
+            margin-bottom: 0.55rem;
+        }
+
+        .formula-sub {
+            font-size: 0.95rem;
+            color: #dbd5cd;
+        }
+
+        .gold-text { color: #d8cabd; }
+        .magenta-text { color: #d29a70; }
+        .teal-text { color: #abc0d3; }
+        .aqua-text { color: #c8d6e3; }
+        .white-text { color: var(--white); }
+
+        .featured-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            border-radius: 20px 20px 0 0;
+            background: var(--gradient-brand);
+        }
+
+        .featured-container { position: relative; }
+
+        .model-coaching-quote {
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .model-coaching-quote p {
+            font-size: 2rem;
+            line-height: 1.6;
+        }
+
+        .talent-training-quote {
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .talent-training-quote p {
+            font-size: 2rem;
+            line-height: 1.6;
+        }
+
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(26px);
+            transition: opacity 0.75s ease, transform 0.75s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in.delay-1 { transition-delay: 0.1s; }
+        .fade-in.delay-2 { transition-delay: 0.2s; }
+        .fade-in.delay-3 { transition-delay: 0.3s; }
+        .fade-in.delay-4 { transition-delay: 0.4s; }
+
+        @media (max-width: 768px) {
+            section { padding: 5rem 1.3rem; }
+            .hero { padding-top: 9.2rem !important; }
+            .top-nav { padding: 0.7rem 1rem; }
+            .nav-logo { width: 108px; }
+            .nav-links { display: none; }
+            .thirds-container,
+            .card-grid,
+            .two-col,
+            .stat-strip { grid-template-columns: 1fr; }
+            #benefits .card-grid .card { grid-column: auto; }
+            .icon-strip { grid-template-columns: repeat(2, 1fr); }
+            .timeline { flex-direction: column; gap: 1rem; }
+            .timeline::before { display: none; }
+            .highlight-box,
+            .featured-container,
+            .def-card { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="top-nav" id="topNav">
+    <a href="#" class="nav-brand" aria-label="Royal Manufacturing">
+        <span class="nav-logo-wrap">
+            <img class="nav-logo" src="https://www.royal-mfg.com/wp-content/uploads/Royal__logo_bw_242.png" alt="Royal Manufacturing logo">
+        </span>
+        <span>Royal Manufacturing</span>
+    </a>
+    <div class="nav-links">
+        <a href="#model">The Model</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#evaluation">Evaluation</a>
+        <a href="#compensation" class="nav-cta">Compensation</a>
+    </div>
+</nav>
+
+<section class="hero" id="hero">
+    <div class="hero-series fade-in">Systematic High Performance Series</div>
+    <h1 class="hero-title fade-in delay-1">The Stakeholder<br><span class="gold">Model</span></h1>
+    <p class="hero-tagline fade-in delay-2">Developing employees and commissioned individuals into motivated stakeholders with a practical, proven, and intentional approach.</p>
+    <div class="hero-badge fade-in delay-3">Royal Manufacturing · Houston, TX</div>
+    <div class="stat-strip fade-in delay-4">
+        <div class="stat-item">
+            <div class="stat-number magenta">1/3 + 1/3 + 1/3</div>
+            <div class="stat-label">Balanced Evaluation</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number gold">6 mo</div>
+            <div class="stat-label">Goal Segments</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number teal">Monthly</div>
+            <div class="stat-label">Check-ins</div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section id="foundation">
+    <div class="section-label fade-in">01 / Foundation</div>
+    <h2 class="section-title fade-in delay-1">What Is a Stakeholder?</h2>
+    <div class="def-card fade-in delay-2">
+        <div class="def-word">Stakeholder</div>
+        <div class="def-phonetic">/stak-hohl-der/</div>
+        <div class="def-text">A person with an interest or concern in something, especially a business. In this model, everyone is treated as having a direct stake in the organization's success.</div>
+    </div>
+    <div class="quote-block fade-in delay-3">
+        <div class="quote-text">"A player who makes a team great is more valuable than a great player."</div>
+        <div class="quote-author">Coach John Wooden - UCLA Basketball</div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section id="model">
+    <div class="section-label fade-in">02 / The Model</div>
+    <h2 class="section-title fade-in delay-1">The Stakeholder Model</h2>
+    <p class="section-body fade-in delay-2">A strategic business model that gives leaders a practical way to grow and develop employees or commissioned individuals while transforming them into true stakeholders.</p>
+    <div class="highlight-box fade-in delay-3" style="margin-top:2rem;">
+        <p style="margin:0; line-height:1.8;">This model combines <strong class="gold-text">role-specific career paths</strong>, <strong class="teal-text">systematic performance growth</strong>, and <strong class="magenta-text">team-based collaboration strategies</strong> into one repeatable system.</p>
+    </div>
+    <div class="highlight-box teal-box fade-in delay-4" style="margin-top:1.25rem;">
+        <p style="margin:0; line-height:1.8;"><strong class="teal-text">Salaried and commissioned:</strong> no matter how someone is paid, the fundamentals are the same. Skill, experience, and collaboration drive long-term growth.</p>
+    </div>
+    <div class="featured-container model-coaching-quote fade-in delay-4" style="margin-top:2rem;">
+        <p style="margin:0; line-height:1.8;"><strong class="magenta-text">A coaching organization:</strong> this approach helps supervisors coach performance in a consistent way, creating a culture of ongoing development and accountability.</p>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section id="benefits">
+    <div class="section-label fade-in">03 / Why It Works</div>
+    <h2 class="section-title fade-in delay-1">Key Benefits</h2>
+    <div class="card-grid fade-in delay-2">
+        <div class="card">
+            <div class="card-number magenta">01</div>
+            <div class="card-title">Fair Reward for Performance</div>
+            <div class="card-desc">Compensation and career growth tie directly to increased skill and contribution.</div>
+        </div>
+        <div class="card">
+            <div class="card-number gold">02</div>
+            <div class="card-title">Financial Modeling</div>
+            <div class="card-desc">Predictable, budgetable compensation structures for leadership planning.</div>
+        </div>
+        <div class="card">
+            <div class="card-number teal">03</div>
+            <div class="card-title">Organizational Performance</div>
+            <div class="card-desc">Systematic development raises the level across the whole organization.</div>
+        </div>
+        <div class="card">
+            <div class="card-number aqua">04</div>
+            <div class="card-title">Engagement and Morale</div>
+            <div class="card-desc">Improves satisfaction, collaboration, and team cohesion over time.</div>
+        </div>
+        <div class="card">
+            <div class="card-number magenta">05</div>
+            <div class="card-title">Career Ownership</div>
+            <div class="card-desc">People own their growth path while staying aligned with the company mission.</div>
+        </div>
+        <div class="card">
+            <div class="card-number gold">06</div>
+            <div class="card-title">Reduced Admin Burden</div>
+            <div class="card-desc">Self-assessment and structured check-ins reduce supervisory strain.</div>
+        </div>
+        <div class="card">
+            <div class="card-number teal">07</div>
+            <div class="card-title">Reduced Stress</div>
+            <div class="card-desc">Monthly check-ins replace high-pressure annual review surprises.</div>
+        </div>
+        <div class="card">
+            <div class="card-number aqua">08</div>
+            <div class="card-title">No Surprises</div>
+            <div class="card-desc">Continuous feedback means formal reviews confirm what everyone already knows.</div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section id="components">
+    <div class="section-label fade-in">04 / System Architecture</div>
+    <h2 class="section-title fade-in delay-1">Six Key Components</h2>
+    <div class="icon-strip fade-in delay-2">
+        <div class="icon-item">
+            <div class="icon-circle">📈</div>
+            <div class="icon-label">Career Paths</div>
+            <div class="icon-desc">Entry to executive progression</div>
+        </div>
+        <div class="icon-item">
+            <div class="icon-circle">🎯</div>
+            <div class="icon-label">Goal-Setting</div>
+            <div class="icon-desc">Six-month segment goals</div>
+        </div>
+        <div class="icon-item">
+            <div class="icon-circle">📋</div>
+            <div class="icon-label">Evaluation</div>
+            <div class="icon-desc">Balanced review system</div>
+        </div>
+        <div class="icon-item">
+            <div class="icon-circle">💰</div>
+            <div class="icon-label">Compensation</div>
+            <div class="icon-desc">Fair and objective structure</div>
+        </div>
+        <div class="icon-item">
+            <div class="icon-circle">🌱</div>
+            <div class="icon-label">Development</div>
+            <div class="icon-desc">Integrated staff growth</div>
+        </div>
+        <div class="icon-item">
+            <div class="icon-circle">🤝</div>
+            <div class="icon-label">Coaching</div>
+            <div class="icon-desc">Consistent supervisor coaching rhythm</div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section id="career-paths">
+    <div class="section-label fade-in">05 / Career Paths</div>
+    <h2 class="section-title fade-in delay-1">Entry to Executive</h2>
+    <div class="two-col fade-in delay-2">
+        <div>
+            <p class="section-body">Every person has a clear progression path, horizontal and/or vertical, with systematic skill development that benefits both the individual and the organization.</p>
+            <div class="highlight-box" style="margin-top:1.5rem;">
+                <p style="margin:0; line-height:1.8;"><strong class="gold-text">Core Principle:</strong> as people develop new skills and increase their value, they see that investment reflected in trajectory and earning potential.</p>
+            </div>
+        </div>
+        <div>
+            <div class="card" style="margin-bottom:1.25rem;">
+                <div class="card-number magenta">→</div>
+                <div class="card-title">Horizontal Progression</div>
+                <div class="card-desc">Broaden skills and capabilities without requiring a title change.</div>
+            </div>
+            <div class="card">
+                <div class="card-number gold">↑</div>
+                <div class="card-title">Vertical Progression</div>
+                <div class="card-desc">Advance into higher levels of responsibility and leadership.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section id="goals">
+    <div class="section-label fade-in">06 / Goal-Setting System</div>
+    <h2 class="section-title fade-in delay-1">Six-Month Segment Goals</h2>
+    <p class="section-body fade-in delay-2">Clear goals are set for each six-month segment with outcomes defined so that what winning looks like is easy to see.</p>
+    <div class="timeline fade-in delay-3">
+        <div class="timeline-item">
+            <div class="timeline-dot magenta"></div>
+            <div class="timeline-label">Month 1</div>
+            <div class="timeline-desc">Goals set for all three focus areas in alignment with company priorities.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot gold"></div>
+            <div class="timeline-label">Months 2-5</div>
+            <div class="timeline-desc">Monthly check-ins with self-assessment and supervisor coaching.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot teal"></div>
+            <div class="timeline-label">Month 6</div>
+            <div class="timeline-desc">Formal review with compensation decision, where appropriate.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot aqua"></div>
+            <div class="timeline-label">Repeat</div>
+            <div class="timeline-desc">New goals, new segment, continuous growth.</div>
+        </div>
+    </div>
+    <div class="highlight-box teal-box fade-in delay-4">
+        <p style="margin:0; line-height:1.8;"><strong class="teal-text">Built-in succession planning:</strong> the cadence naturally creates matriculation pathways and prepares people for the next level.</p>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section id="evaluation">
+    <div class="section-label fade-in">07 / Evaluation System</div>
+    <h2 class="section-title fade-in delay-1">The Three Pillars</h2>
+    <p class="section-body fade-in delay-2">Each person is evaluated equally across three dimensions, each worth one-third of the overall assessment.</p>
+    <div class="thirds-container fade-in delay-3">
+        <div class="third-block magenta-block">
+            <div class="third-fraction magenta-text">1/3</div>
+            <div class="third-title">New Skill Development</div>
+            <div class="third-items">New tasks or knowledge areas<br>Certifications and education<br>Projects and experiences<br>Conferences and associations</div>
+        </div>
+        <div class="third-block gold-block">
+            <div class="third-fraction gold-text">1/3</div>
+            <div class="third-title">Mastery and Tenure</div>
+            <div class="third-items">Increased aptitude<br>Deeper experience<br>Institutional knowledge<br>Big-picture understanding</div>
+        </div>
+        <div class="third-block teal-block">
+            <div class="third-fraction teal-text">1/3</div>
+            <div class="third-title">Culture and Character</div>
+            <div class="third-items">Purpose in community<br>Values in action<br>Investing in others<br>Making the team better</div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section id="reviews">
+    <div class="section-label fade-in">08 / Review System</div>
+    <h2 class="section-title fade-in delay-1">Monthly Check-ins, Not Annual Surprises</h2>
+    <div class="two-col fade-in delay-2">
+        <div>
+            <p class="section-body">Each month, the employee or commissioned individual brings a self-evaluation to the supervisor, rating progress toward total completion of each goal on a 1-10 scale.</p>
+            <p class="section-body" style="margin-top:1rem;">The supervisor affirms or gently redirects, then asks: <strong class="gold-text">"How can I support your progress this month?"</strong></p>
+            <div class="highlight-box magenta-box" style="margin-top:1.5rem;">
+                <p style="margin:0; line-height:1.8;"><strong class="magenta-text">Key Insight:</strong> it is easier to gently correct monthly than to wait for a once-a-year conversation. Most people underestimate progress, so supervisors often end up encouraging and building them up.</p>
+            </div>
+        </div>
+        <div>
+            <div class="card" style="margin-bottom:1.25rem;">
+                <div class="card-number teal">✓</div>
+                <div class="card-title">Self-Assessment Benefits</div>
+                <div class="card-desc">Empowerment, context and fairness, administrative easement, full support, no surprises.</div>
+            </div>
+            <div class="card" style="margin-bottom:1.25rem;">
+                <div class="card-number gold">⟳</div>
+                <div class="card-title">Why Six-Month Sprints?</div>
+                <div class="card-desc">A series of sprints is easier to buy into than a long marathon, with flexibility to pivot in a changing market.</div>
+            </div>
+            <div class="card">
+                <div class="card-number magenta">★</div>
+                <div class="card-title">The Promise</div>
+                <div class="card-desc">When monthly check-ins are handled with care and consistency, the formal review produces zero surprises.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section id="compensation">
+    <div class="section-label fade-in">09 / Compensation Increase</div>
+    <h2 class="section-title fade-in delay-1">Performance Drives Compensation</h2>
+    <p class="section-body fade-in delay-2">The model includes compensation increases tied to objective performance outcomes. Whether someone is hourly, salaried, or commissioned, long-term earning growth follows the same fundamentals: skill set, experience, and sound judgment applied to business outcomes.</p>
+
+    <div class="two-col fade-in delay-3" style="margin-top:2.5rem;">
+        <div>
+            <div class="highlight-box magenta-box" style="margin-top:0;">
+                <p style="margin:0; line-height:1.8;"><strong class="white-text">Compensation increase logic:</strong> each role has a defined increase opportunity per segment. Earned increase is determined by documented goal achievement against agreed standards.</p>
+
+                <div class="formula-box">
+                    <div class="formula-title">Compensation Formula</div>
+                    <div class="formula-main">Earned Increase = Potential Increase × Goal Achievement</div>
+                    <div class="formula-sub">Example: if potential increase is 4.0% and goal achievement is 85%, earned increase equals <strong>3.4%</strong>.</div>
+                </div>
+            </div>
+
+            <div class="highlight-box teal-box" style="margin-top:1.25rem;">
+                <p style="margin:0; line-height:1.8;"><strong class="teal-text">Commissioned individuals:</strong> staying on track to hit goals and receiving coaching ensures increasing skill, experience, and collaboration translate into stronger earning power over time.</p>
+            </div>
+        </div>
+
+        <div>
+            <div class="card" style="margin-bottom:1.25rem;">
+                <div class="card-title gold-text">Market-Based Strategy</div>
+                <div class="card-desc">Set target market percentile strategy and use objective external compensation data sources for calibration.</div>
+            </div>
+            <div class="card" style="margin-bottom:1.25rem;">
+                <div class="card-title teal-text">Getting Back on Track</div>
+                <div class="card-desc">If someone falls short of 100%, expectations stay clear. Strong performance in the next segment puts them back on track.</div>
+            </div>
+            <div class="card">
+                <div class="card-title magenta-text">The Bottom Line</div>
+                <div class="card-desc">The system gives people ownership of career trajectory and value growth, regardless of compensation type.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section id="talent">
+    <div class="section-label fade-in">10 / Talent Optimization</div>
+    <h2 class="section-title fade-in delay-1">Data-Driven People Strategy</h2>
+    <p class="section-body fade-in delay-2">The Stakeholder Model is strengthened by talent optimization data and software to align people, roles, and organizational strategy. Tools such as Predictive Index are optional and complementary.</p>
+    <div class="card-grid fade-in delay-3" style="margin-top:2rem;">
+        <div class="card">
+            <div class="card-number magenta behavior-circle">●</div>
+            <div class="card-title">Behavioral Insights (Optional)</div>
+            <div class="card-desc">Align roles and responsibilities to individual behavioral strengths.</div>
+        </div>
+        <div class="card">
+            <div class="card-number teal">⚙</div>
+            <div class="card-title">System Software</div>
+            <div class="card-desc">Design and manage the model with software that supports clarity and execution.</div>
+        </div>
+        <div class="card">
+            <div class="card-number gold">∞</div>
+            <div class="card-title">Integrated Development</div>
+            <div class="card-desc">Staff investment is easier to budget with a built-in succession pathway.</div>
+        </div>
+    </div>
+    <div class="featured-container talent-training-quote fade-in delay-4">
+        <p style="margin:0; line-height:1.8;"><strong class="gold-text">Training and support:</strong> implementation includes staff training, performance coaching, and ongoing support to sustain the model over time.</p>
+    </div>
+</section>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+    window.addEventListener('scroll', () => {
+        document.getElementById('topNav').classList.toggle('scrolled', window.scrollY > 50);
+    });
+</script>
+
+</body>
+</html>
