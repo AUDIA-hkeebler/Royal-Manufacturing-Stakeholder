@@ -365,21 +365,23 @@
             margin-top: 2rem;
         }
 
-        /* Key Benefits: center cards 07 and 08 on the last row */
+        /* Key Benefits: keep card alignment consistent across rows */
         #benefits .card-grid {
-            grid-template-columns: repeat(6, minmax(0, 1fr));
+            grid-template-columns: repeat(3, minmax(0, 1fr));
         }
 
         #benefits .card-grid .card {
-            grid-column: span 2;
+            grid-column: auto;
         }
 
-        #benefits .card-grid .card:nth-child(7) {
-            grid-column: 2 / span 2;
-        }
-
-        #benefits .card-grid .card:nth-child(8) {
-            grid-column: 4 / span 2;
+        @media (min-width: 769px) {
+            /* Desktop lock: keep 07 under 04 and 08 under 05 */
+            #benefits .card-grid .card:nth-child(7) {
+                grid-column: 1 / 2 !important;
+            }
+            #benefits .card-grid .card:nth-child(8) {
+                grid-column: 2 / 3 !important;
+            }
         }
 
         .card {
@@ -732,13 +734,60 @@
             .card-grid,
             .two-col,
             .stat-strip { grid-template-columns: 1fr; }
+            #benefits .card-grid { grid-template-columns: 1fr; }
             #benefits .card-grid .card { grid-column: auto; }
+            #benefits .card-grid .card:nth-child(7),
+            #benefits .card-grid .card:nth-child(8) { grid-column: auto; }
             .icon-strip { grid-template-columns: repeat(2, 1fr); }
             .timeline { flex-direction: column; gap: 1rem; }
             .timeline::before { display: none; }
+            #goals .timeline {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+                padding: 0.75rem 0;
+            }
+            #goals .timeline-item {
+                width: 100%;
+                max-width: 34rem;
+                margin: 0 auto;
+                padding: 0;
+                text-align: center;
+            }
+            #goals .timeline-dot { margin: 0 auto 0.85rem; }
             .highlight-box,
             .featured-container,
             .def-card { padding: 1.5rem; }
+        }
+
+        @media (max-width: 900px) {
+            #goals .timeline {
+                display: grid;
+                grid-template-columns: 1fr;
+                justify-items: center;
+                gap: 1.2rem;
+                padding: 0.75rem 0;
+            }
+            #goals .timeline::before { display: none; }
+            #goals .timeline-item {
+                width: 100%;
+                max-width: 34rem;
+                margin: 0 auto;
+                padding: 0;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            #goals .timeline-item:last-child { justify-self: center; }
+            #goals .timeline-dot { margin: 0 auto 0.85rem; }
+            #goals .timeline-label,
+            #goals .timeline-desc {
+                width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
         }
     </style>
 </head>
